@@ -12,7 +12,7 @@ class Detail(models.Model):
 	last_name = models.CharField(max_length=150)
 	middle_name = models.CharField(max_length=150)
 	age = models.IntegerField()
-	birthdy = models.DateTimeField('date published')
+	birthday = models.DateTimeField('date published')
 	#course = models.CharField(max_length=150)
 	course = models.ManyToManyField ("Course",related_name="Details")
 		 
@@ -29,7 +29,16 @@ class Detail(models.Model):
 class Course(models.Model):
 	course_name = models.CharField(max_length=100)
 	description = models.TextField(max_length=500)
+	subject = models.ManyToManyField("Subject",related_name="Course")
+	
   
 	def __str__(self):
 			return self.course_name
 				  
+class Subject(models.Model):
+	subject_name = models.CharField(max_length=150)
+	description = models.TextField(max_length=500)
+	
+	
+	def __str__(self):
+			return self.subject_name
