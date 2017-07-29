@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from student.views import CourseList, list_student, SubjectList
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+	url(r'^$',list_student, name='student'),
+	url(r'^courses/$', CourseList.as_view(), name='courses'),
+	url(r'^subjects/$', SubjectList.as_view(), name='subjects')
 ]

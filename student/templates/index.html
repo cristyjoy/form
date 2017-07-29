@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Webdev</title>
+</head>
+<body>
+		<h1>Hello World!</h1>
+
+{% if request.user.is_authenticated %}
+	<h1>Hi {{ request.user.username|title }}</h1>
+	{% else %}
+		<p>welcome</p>
+	{% endif %}
+	
+	<h2>Student</h2>
+	<p>{{ students.count }} Students </p>
+	{% for var in students %}
+		<p>{{ var.first_name }} - {{ var.last_name }}</p>
+	{% endfor %}
+
+</body>
+</html>
